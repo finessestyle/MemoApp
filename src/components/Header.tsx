@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-const Header = () => {
+const Header = (): JSX.Element => {
   return (
     <View style={styles.header}>
       <View style={styles.headerInner}>

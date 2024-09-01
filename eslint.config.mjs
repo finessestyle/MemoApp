@@ -12,9 +12,12 @@ export default [
   pluginReact.configs.flat.recommended,
   {
     rules: {
-      "react/react-in-jsx-scope": 0,
-      "semi": [2, "never"],
-      "comma-dangle": [2, "never"]
+      "react/react-in-jsx-scope": "off",
+      "semi": ["error", "never"],
+      "comma-dangle": ["error", "never"],
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-unused-vars": ["error"],
+      "react/prop-types": "off"
     }
   }
 ]
