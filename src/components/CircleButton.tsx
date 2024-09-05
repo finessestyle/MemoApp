@@ -5,7 +5,7 @@ import {
 
 interface Props {
   children: JSX.Element
-  style: ViewStyle
+  style?: ViewStyle
   onPress?: () => void
 }
 

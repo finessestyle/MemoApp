@@ -23,15 +23,17 @@ const handlePress = (id: string, bodyText: string): void => {
 }
 
 const Edit = (): JSX.Element => {
-  const id = String(useLocalSearchParams(). id)
+  const id = String(useLocalSearchParams().id)
   const [bodyText, setBodyText] = useState('')
   useEffect(() => {
     if (auth.currentUser === null) return
     const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
     getDoc(ref)
       .then((docRef) => {
-        const RemoteBodyText = docRef?.data()?.bodyText
-        setBodyText(RemoteBodyText)
+        const RemoteBodyText = docRef?.data() as {
+          bodyText?: string
+        }
+        setBodyText(RemoteBodyText.bodyText ?? '')
       })
       .catch((error) => {
         console.log(error)
@@ -48,7 +50,7 @@ const Edit = (): JSX.Element => {
           onChangeText={(text) => { setBodyText(text) }}
         />
       </View>
-      <CircleButton onPress={ () => { handlePress(id, bodyText) }} style={{}}>
+      <CircleButton onPress={ () => { handlePress(id, bodyText) }} >
         <Icon name='check' size={40} color='#ffffff'/>
       </CircleButton>
     </KeyboardAvoidingView>

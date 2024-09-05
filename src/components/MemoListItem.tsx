@@ -32,7 +32,7 @@ const handlePress = (id: string): void => {
 const MemoListItem = (props: Props): JSX.Element | null => {
   const { memo } = props
   const { bodyText, updatedAt } = memo
-  if (bodyText === null || updatedAt === null) { return null}
+  if (bodyText === null || updatedAt === null) return null
   const dateString = updatedAt.toDate().toLocaleString('ja-JP')
   return (
     <Link

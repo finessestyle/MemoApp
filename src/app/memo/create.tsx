@@ -2,7 +2,7 @@ import { View, TextInput, StyleSheet } from 'react-native'
 import { router } from 'expo-router'
 import { useState } from 'react'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
-import { auth, db } from '../../config'
+import { db, auth } from '../../config'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 import KeyboardAvoidingView from '../../components/KeyboadAvoidingView'
@@ -14,13 +14,13 @@ const handlePress = (bodyText: string): void => {
     bodyText,
     updatedAt: Timestamp.fromDate(new Date())
   })
-  .then((docRef) => {
-    console.log('success', docRef.id)
-    router.back()
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+    .then((docRef) => {
+      console.log('success', docRef.id)
+      router.back()
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 
 const Create = (): JSX.Element => {
@@ -36,7 +36,7 @@ const Create = (): JSX.Element => {
           onChangeText={(text) => { setBodyText(text) }}
         />
       </View>
-      <CircleButton onPress={() => { handlePress(bodyText) }} style={{}}>
+      <CircleButton onPress={() => { handlePress(bodyText) }}>
         <Icon name='check' size={40} color='#ffffff'/>
       </CircleButton>
     </KeyboardAvoidingView>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     paddingVertical: 32,
     paddingHorizontal: 27,
-    flex: 1,
+    flex: 1
   },
   input: {
     flex: 1,

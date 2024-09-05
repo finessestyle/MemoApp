@@ -16,6 +16,7 @@ const handlePress = (): void => {
 const List = (): JSX.Element => {
   const [memos, setMemos] = useState<Memo[]>([])
   const navigation = useNavigation()
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => {
@@ -46,8 +47,10 @@ const List = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <FlatList
+        // mapメソッドとは配列の中身を加工する
+        // {memos.map(() => <MemoListItem memo={memo} )}
         data={memos}
-        renderItem={({ item }) => <MemoListItem memo ={item } />}
+        renderItem={({ item }) => <MemoListItem memo ={ item } />}
       />
       <CircleButton onPress={handlePress} style={{}}>
         <Icon name='plus' size={40} color='#ffffff' />
