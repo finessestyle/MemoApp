@@ -1,13 +1,13 @@
 import { View, TextInput, StyleSheet } from 'react-native'
 import { router } from 'expo-router'
-import  { useState } from 'react'
+import { useState } from 'react'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
 import { auth, db } from '../../config'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 import KeyboardAvoidingView from '../../components/KeyboadAvoidingView'
 
-const handlePress = (bodyText: string) => {
+const handlePress = (bodyText: string): void => {
   if (auth.currentUser === null) return
   const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
   addDoc(ref, {
@@ -29,14 +29,14 @@ const Create = (): JSX.Element => {
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-        multiline
-        style={styles.input}
-        value={bodyText}
-        autoFocus
-        onChangeText={(text) => { setBodyText(text)}}
-      />
+          multiline
+          style={styles.input}
+          value={bodyText}
+          autoFocus
+          onChangeText={(text) => { setBodyText(text) }}
+        />
       </View>
-      <CircleButton onPress={() => {handlePress(bodyText) }} style={{}}>
+      <CircleButton onPress={() => { handlePress(bodyText) }} style={{}}>
         <Icon name='check' size={40} color='#ffffff'/>
       </CircleButton>
     </KeyboardAvoidingView>

@@ -5,7 +5,7 @@ import { auth } from '../../config'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import Button from '../../components/Button'
 
-const handlePress = (email: string, password: string) => {
+const handlePress = (email: string, password: string): void => {
   // 新規登録
   console.log(email, password)
   createUserWithEmailAndPassword(auth, email, password)
@@ -20,7 +20,7 @@ const handlePress = (email: string, password: string) => {
     })
 }
 
-const SignUp= (): JSX.Element => {
+const SignUp = (): JSX.Element => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   return (
@@ -30,11 +30,11 @@ const SignUp= (): JSX.Element => {
         <TextInput
           style={styles.input}
           value={email}
-          autoCapitalize='none' //小文字入力
+          autoCapitalize='none'
           keyboardType='email-address'
           placeholder='Email Address'
           textContentType='emailAddress'
-          onChangeText={(text)=>{setEmail(text)}}
+          onChangeText={(text) => { setEmail(text) }}
         />
         <TextInput
           style={styles.input}
@@ -43,9 +43,9 @@ const SignUp= (): JSX.Element => {
           placeholder='Password'
           secureTextEntry
           textContentType='password'
-          onChangeText={(text)=>{setPassword(text)}}
+          onChangeText={(text) => { setPassword(text) }}
         />
-        <Button label='submit' onPress={() => {handlePress(email, password)}} />
+        <Button label='submit' onPress={() => { handlePress(email, password) }} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
           <Link replace href='/auth/login' asChild>

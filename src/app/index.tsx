@@ -1,7 +1,6 @@
-import { Redirect } from 'expo-router'
+import { Redirect, router } from 'expo-router'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect } from 'react'
-import { router } from 'expo-router'
 import { auth } from '../config'
 
 const Index = (): JSX.Element => {

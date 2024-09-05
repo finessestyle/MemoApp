@@ -7,7 +7,7 @@ interface Props {
 }
 const Hello = (props: Props): JSX.Element => {
   const { children, bang, style } = props
-    return (
+  return (
     <View >
       <Text style={[styles.text, style]}>
         Hello{children}{bang === true ? '!' : '' }

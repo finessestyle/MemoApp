@@ -29,11 +29,11 @@ const LogIn = (): JSX.Element => {
         <TextInput
           style={styles.input}
           value={email}
-          autoCapitalize='none' //小文字入力
+          autoCapitalize='none' // 小文字入力
           keyboardType='email-address'
           placeholder='Email Address'
           textContentType='emailAddress'
-          onChangeText={(text)=>{setEmail(text)}}
+          onChangeText={(text) => { setEmail(text) }}
         />
         <TextInput
           style={styles.input}
@@ -42,9 +42,9 @@ const LogIn = (): JSX.Element => {
           placeholder='Password'
           secureTextEntry
           textContentType='password'
-          onChangeText={(text)=>{setPassword(text)}}
+          onChangeText={(text) => { setPassword(text) }}
         />
-        <Button label='submit' onPress={() => {handlePress(email, password)}}/>
+        <Button label='submit' onPress={() => { handlePress(email, password) }}/>
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
           <Link replace href='/auth/signup' asChild>

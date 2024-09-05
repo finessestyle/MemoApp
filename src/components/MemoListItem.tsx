@@ -1,18 +1,50 @@
 import {
-  View, Text, TouchableOpacity, StyleSheet
+  View, Text, TouchableOpacity, StyleSheet, Alert
 } from 'react-native'
 import { Link } from 'expo-router'
+import { deleteDoc, doc } from 'firebase/firestore'
+import { db, auth } from '../config'
 import Icon from '../components/Icon'
+import { type Memo } from '../../types/memo'
 
-const MemoListItem = (): JSX.Element => {
+interface Props {
+  memo: Memo
+}
+
+const handlePress = (id: string): void => {
+  if (auth.currentUser === null) return
+  const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
+  Alert.alert('メモを削除します', 'よろしいですか？', [
+    {
+      text: 'キャンセル'
+    },
+    {
+      text: '削除する',
+      style: 'destructive',
+      onPress: () => {
+        deleteDoc(ref)
+          .catch(() => { Alert.alert('削除に失敗しました') })
+      }
+    }
+  ])
+}
+
+const MemoListItem = (props: Props): JSX.Element | null => {
+  const { memo } = props
+  const { bodyText, updatedAt } = memo
+  if (bodyText === null || updatedAt === null) { return null}
+  const dateString = updatedAt.toDate().toLocaleString('ja-JP')
   return (
-    <Link href='/memo/detail' asChild>
+    <Link
+      href={{ pathname: '/memo/detail', params: { id: memo.id } }}
+      asChild
+    >
       <TouchableOpacity style={styles.memoListItem}>
         <View>
-          <Text style={styles.memoListItemTitle}>買い物リスト</Text>
-          <Text style={styles.memoListItemDate}>2024年8月31日15:33</Text>
+          <Text numberOfLines={1} style={styles.memoListItemTitle}>{bodyText}</Text>
+          <Text style={styles.memoListItemDate}>{dateString}</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => { handlePress(memo.id) }}>
           <Icon name='delete' size={40} color='#B0B0B0' />
         </TouchableOpacity>
       </TouchableOpacity>
