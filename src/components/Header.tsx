@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     right: 16,
     bottom: 16,
     color: 'rgba(255,255,255,0.7)'
-  },
+  }
 })
 
 export default Header
