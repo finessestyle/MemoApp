@@ -3,7 +3,7 @@ import { Text, StyleSheet, type ViewStyle, TouchableOpacity} from 'react-native'
 interface Props {
   children?: JSX.Element
   style?: ViewStyle
-  onPress: () => void
+  onPress?: () => void
 }
 
 const CircleButton = (props: Props) => {
