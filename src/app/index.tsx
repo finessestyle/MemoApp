@@ -1,47 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import Header from '../components/Header'
+import MemoListItem from '../components/MemoListItem'
+import CircleButton from '../components/CirecleButton'
 
 const Index = () => {
   return(
     <View style={styles.container}>
-
-      <View style={styles.inner}>
-        <View>
-          <Text>MemoApp</Text>
-          <Text>ログアウト</Text>
-        </View>
-      </View>
-
-      <View>
-        <View>
-            <Text>買い物リスト</Text>
-            <Text>2025年5月28日0:07</Text>
-        </View>
-        <View>
-          <Text>X</Text>
-        </View>
-
-        <View>
-            <Text>買い物リスト</Text>
-            <Text>2025年5月28日0:07</Text>
-        </View>
-        <View>
-          <Text>X</Text>
-        </View>
-
-        <View>
-            <Text>買い物リスト</Text>
-            <Text>2025年5月28日0:07</Text>
-        </View>
-        <View>
-          <Text>X</Text>
-        </View>
-
-      </View>
-
-      <View>
-        <Text>＋</Text>
-      </View>
-
+      <Header />
+      <MemoListItem />
+      <MemoListItem />
+      <MemoListItem />
+      <CircleButton>＋</CircleButton>
     </View>
   )
 }
@@ -49,10 +18,7 @@ const Index = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  inner: {
+    backgroundColor: '#ffffff'
   }
 })
 
