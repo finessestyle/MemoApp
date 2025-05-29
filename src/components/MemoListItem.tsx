@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { router } from 'expo-router'
-import Icon from '../components/Icon'
+import Icon from './Icon'
 
 const handlePress = () => {
   router.push('/memo/detail')
@@ -15,7 +15,7 @@ const MemoListItem = () => {
       </View>
       <View>
         <Text>
-          <Icon name='delete' size={20} color='#ffffff' />
+          <Icon name='delete' size={40} color='#848484' />
         </Text>
       </View>
     </TouchableOpacity>

@@ -1,17 +1,15 @@
 import { View, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import { router } from 'expo-router'
-import Header from '../../components/Header'
 import CircleButton from '../../components/CirecleButton'
 import Icon from '../../components/Icon'
 
 const handlePress = () => {
-  router.push('/memo/list')
+  router.back()
 }
 
 const Edit = () => {
   return(
     <KeyboardAvoidingView behavior='height' style={styles.container}>
-      <Header />
       <View style={styles.inputContainer}>
         <TextInput
           multiline
