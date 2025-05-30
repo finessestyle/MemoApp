@@ -1,8 +1,21 @@
-import { Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { router } from 'expo-router'
+import { signOut } from 'firebase/auth'
+import { auth } from '../config'
+
+const handlePress = (): void => {
+  signOut(auth)
+    .then(() => {
+      router.replace('/auth/log_in')
+    })
+    .catch(()=> {
+      Alert.alert('ログアウトに失敗しました')
+    })
+}
 
 const LogOutButton = () => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={handlePress}>
         <Text style={styles.text}>ログアウト</Text>
     </TouchableOpacity>
   )

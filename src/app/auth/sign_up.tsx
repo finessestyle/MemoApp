@@ -1,19 +1,30 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import { Link, router } from 'expo-router'
 import { useState } from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../config'
 import Button from '../../components/Button'
-
-const handlePress = () => {
-  router.replace('/memo/list')
-}
 
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const handlePress = (email: string, password: string) => {
+    console.log(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log(userCredential.user.uid)
+      router.replace('/memo/list')
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
-        <Text style={styles.title}>Sign up</Text>
+        <Text style={styles.title}>Sign Up</Text>
         <TextInput
           style={styles.input}
           value={email}
@@ -32,10 +43,10 @@ const SignUp = () => {
           secureTextEntry
           textContentType='password'
         />
-        <Button label= 'Submit' onPress={handlePress} />
+        <Button label= 'Submit' onPress={() => {handlePress(email, password)} } />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <Link  href='/auth/log_in' asChild>
+          <Link replace href='/auth/log_in' asChild>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log in.</Text>
             </TouchableOpacity>
@@ -85,4 +96,5 @@ const styles = StyleSheet.create({
     color: '#467FD3'
   }
 })
+
 export default SignUp
