@@ -23,6 +23,7 @@ const handlePress = (email: string, password: string) => {
 const LogIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
