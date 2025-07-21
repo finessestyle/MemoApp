@@ -1,9 +1,18 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import Header from '../components/Header'
+import MemoListItem from '../components/MemoListItem'
+import CircleButton from '../components/CircleButton'
 
 const list = () => {
   return (
     <View style={styles.container}>
-      <Text>Hello World</Text>
+      <Header />
+      <View>
+        <MemoListItem />
+        <MemoListItem />
+        <MemoListItem />
+      </View>
+      <CircleButton>＋</CircleButton>
     </View>
   )
 }
@@ -11,9 +20,7 @@ const list = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'red'
+    backgroundColor: '#ffffff'
   }
 })
 
