@@ -40,6 +40,7 @@ const edit = () => {
           value={bodyText}
           style={styles.input}
           onChangeText={(text) => {setBodyText(text)}}
+          autoFocus
         />
       </View>
       <CircleButton onPress={() => {handlePress(id, bodyText)}}>
