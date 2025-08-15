@@ -1,18 +1,22 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Link } from 'expo-router'
+import Icon from '../components/Icon'
 
 const MemoListItem = () => {
   return (
-    <View>
-      <View style={styles.memoListItem}>
-        <View>
-          <Text style={styles.memoListItemTitle}>買い物リスト</Text>
-          <Text style={styles.memoListItemDate}>2025年8月14日16:15</Text>
+    <Link href='/memo/detail' asChild>
+      <TouchableOpacity>
+        <View style={styles.memoListItem}>
+          <View>
+            <Text style={styles.memoListItemTitle}>買い物リスト</Text>
+            <Text style={styles.memoListItemDate}>2025年8月14日16:15</Text>
+          </View>
+          <TouchableOpacity >
+            <Icon name='delete' size={30} color='#B0B0B0' />
+          </TouchableOpacity>
         </View>
-        <View style={styles.deleteButton}>
-          <Text style={styles.deleteButtonText}>×</Text>
-        </View>
-      </View>
-    </View>
+      </TouchableOpacity>
+    </Link>
   )
 }
 
@@ -36,9 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: '#848484'
-  },
-  deleteButton: {
-  },
+  }
 })
 
 export default MemoListItem
