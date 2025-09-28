@@ -15,8 +15,7 @@ export default [
     rules: {
       "react/react-in-jsx-scope": 0,
       "semi": [2, "never"],
-      "comma-dangle": [2, "never"],
-      "react/react-in-jsx-scope": 0
+      "comma-dangle": [2, "never"]
     }
   }
 ]
