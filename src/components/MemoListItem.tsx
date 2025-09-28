@@ -4,7 +4,7 @@ import Icon from '../components/Icon'
 
 const MemoListItem = () => {
   return (
-    <Link href='/memo/edit' asChild>
+    <Link href='/memo/detail' asChild>
       <TouchableOpacity >
         <View style={styles.memoListItem}>
           <View >
