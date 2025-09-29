@@ -6,7 +6,6 @@ import { auth } from '../../config'
 import Button from '../../components/Button'
 
 const handlePress = (email: string, password: string) => {
-  // 新規登録
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     console.log(userCredential.user.uid)

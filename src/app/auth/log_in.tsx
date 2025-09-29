@@ -6,7 +6,6 @@ import { auth } from '../../config'
 import Button from '../../components/Button'
 
 const handlePress = (email: string, password: string) => {
-  // ログイン
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     console.log(userCredential.user.uid)
