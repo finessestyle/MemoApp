@@ -1,8 +1,8 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { Link, router } from 'expo-router'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { useState, useEffect } from 'react'
-import { auth, db } from '../../config'
+import { useState } from 'react'
+import { auth } from '../../config'
 import Button from '../../components/Button'
 
 const handlePress = (email: string, password: string) => {
