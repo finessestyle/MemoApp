@@ -6,7 +6,7 @@ import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 
 const handlePress = () => {
-  router.back()
+  router.push('/memo/edit')
 }
 
 const Detail = () => {
