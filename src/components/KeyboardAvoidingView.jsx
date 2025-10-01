@@ -4,7 +4,7 @@ import {
   Keyboard, Dimensions, Animated
 } from 'react-native'
 
-const KeyboardSafeView = ({ children, style }) => {
+const KeyboardAvoidingView = ({ children, style }) => {
   const initialViewHeight = useRef(null)
   const animatedViewHeight = useRef(null)
   const [viewHeight, setViewHeight] = useState(null)
@@ -64,4 +64,4 @@ const KeyboardSafeView = ({ children, style }) => {
     </Animated.View>
   )
 }
-export default KeyboardSafeView
+export default KeyboardAvoidingView
