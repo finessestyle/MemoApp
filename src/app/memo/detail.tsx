@@ -1,29 +1,46 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 // import { Feather } from '@expo/vector-icons'
-import { router } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
+import { onSnapshot, doc } from 'firebase/firestore'
+import { auth, db } from '../../config'
+import { type Memo } from '../../../types/memo'
+import { useState, useEffect } from 'react'
 
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 
-const handlePress = () => {
-  router.push('/memo/edit')
+const handlePress = (id: string) => {
+  router.push({ pathname: '/memo/edit', params: { id }})
 }
 
 const Detail = () => {
+  const id = String(useLocalSearchParams().id)
+  const [memo, setMemo] = useState<Memo | null>(null)
+  useEffect(() => {
+    if (auth.currentUser === null) return
+    const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
+    const unsubscribe = onSnapshot(ref, (memoDoc) => {
+      const { bodyText, updatedAt } = memoDoc.data() as Memo
+      setMemo({
+        id: memoDoc.id,
+        bodyText,
+        updatedAt
+      })
+    })
+    return unsubscribe
+  }, [])
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
-        <Text style={styles.memoTitle}>買い物リスト</Text>
-        <Text style={styles.memoDate}>2025年9月26日22:22</Text>
+        <Text style={styles.memoTitle} numberOfLines={1}>{memo?.bodyText}</Text>
+        <Text style={styles.memoDate}>{memo?.updatedAt?.toDate().toLocaleString('ja-JP')}</Text>
       </View>
       <ScrollView style={styles.memoBody}>
         <Text style={styles.memoBodyText}>
-          ・りんご
-          ・みかん
-          ・オレンジ
+          {memo?.bodyText}
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 60, bottom: 'auto' }} onPress={() => {handlePress()}}>
+      <CircleButton style={{ top: 60, bottom: 'auto' }} onPress={() => {handlePress(id)}}>
         <Icon name='pencil' size={40} color='#ffffff' />
       </CircleButton>
     </View>
@@ -54,10 +71,10 @@ const styles = StyleSheet.create({
     lineHeight: 16
   },
   memoBody: {
-    paddingVertical: 32,
     paddingHorizontal: 27
   },
   memoBodyText: {
+    paddingVertical: 32,
     fontSize: 16,
     lineHeight: 24,
     color: '#000000'
