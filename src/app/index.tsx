@@ -5,45 +5,39 @@ const Index = () => {
     <View style={styles.container}>
 
       <View style={styles.header}>
-        <View>
-          <Text>Memo App</Text>
-          <Text>ログアウト</Text>
+        <View style={styles.headerInner}>
+          <Text style={styles.headerTitle}>Memo App</Text>
+          <Text style={styles.headerRight}>ログアウト</Text>
         </View>
       </View>
 
-      <View>
+      <View style={styles.memoListItem}>
         <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2025年11月19日21:58</Text>
-          </View>
-          <View>
-            <Text>x</Text>
-          </View>
+          <Text style={styles.memoListItemTitle}>買い物リスト</Text>
+          <Text style={styles.memoListItemDate}>2025年11月19日21:58</Text>
+        </View>
+        <View style={styles.deleteButton}>
+          <Text>x</Text>
         </View>
       </View>
 
-      <View>
+      <View style={styles.memoListItem}>
         <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2025年11月19日21:58</Text>
-          </View>
-          <View>
-            <Text>x</Text>
-          </View>
+          <Text style={styles.memoListItemTitle}>買い物リスト</Text>
+          <Text style={styles.memoListItemDate}>2025年11月19日21:58</Text>
+        </View>
+        <View style={styles.deleteButton}>
+          <Text>x</Text>
         </View>
       </View>
 
-      <View>
+      <View style={styles.memoListItem}>
         <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2025年11月19日21:58</Text>
-          </View>
-          <View>
-            <Text>x</Text>
-          </View>
+          <Text style={styles.memoListItemTitle}>買い物リスト</Text>
+          <Text style={styles.memoListItemDate}>2025年11月19日21:58</Text>
+        </View>
+        <View style={styles.deleteButton}>
+          <Text>x</Text>
         </View>
       </View>
 
@@ -58,8 +52,47 @@ const Index = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#F7F8F8'
+  },
+  header: {
+    height: 104,
+    backgroundColor: '#467FD3',
+    justifyContent: 'flex-end'
+  },
+  headerInner: {
     alignItems: 'center'
+  },
+  headerTitle: {
+    marginBottom: 8,
+    fontSize: 22,
+    fontWeight: 'bold',
+    lineHeight: 32,
+    color: '#ffffff'
+  },
+  headerRight: {
+    position: 'absolute',
+    bottom: 16,
+    right: 16,
+    color: 'rgba(255,255,255,0.7)'
+  },
+  memoListItem: {
+    backgroundColor: '#ffffff',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 19,
+    borderBottomWidth: 1,
+    borderColor: 'rgba(0,0,0,0.15)'
+  },
+  memoListItemTitle: {
+    fontSize: 16,
+    lineHeight: 32
+  },
+  memoListItemDate: {
+    fontSize: 12,
+    lineHeight: 16,
+    color: "#848484"
   }
 })
 
