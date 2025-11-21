@@ -1,8 +1,10 @@
+import { ReactNode } from 'react'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
+import Icon from '../../components/Icon'
 
-const Detail = () => {
+const Detail = (): ReactNode => {
   return (
     <View style={styles.container}>
       <Header />
@@ -18,7 +20,9 @@ const Detail = () => {
           ・バナナ
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 160 }}>＋</CircleButton>
+      <CircleButton style={{ top: 160 }}>
+        <Icon name='pencil' size={40} color='#ffffff' />
+      </CircleButton>
     </View>
   )
 }

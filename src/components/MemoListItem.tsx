@@ -1,6 +1,8 @@
+import { ReactNode } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import Icon from '../components/Icon'
 
-const MemoListItem = () => {
+const MemoListItem = (): ReactNode => {
   return (
     <View style={styles.memoListItem}>
       <View>
@@ -8,7 +10,9 @@ const MemoListItem = () => {
         <Text style={styles.memoListItemDate}>2025年11月19日21:58</Text>
       </View>
       <View style={styles.deleteButton}>
-        <Text>x</Text>
+        <Text>
+          <Icon name='delete' size={30} color='#B0B0B0' />
+        </Text>
       </View>
     </View>
   )

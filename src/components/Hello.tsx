@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { View, Text, StyleSheet, type TextStyle } from 'react-native'
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
   style?: TextStyle
 }
 
-const Hello = (props: Props) => {
+const Hello = (props: Props): ReactNode => {
   const { children, bang, style } = props
   return (
     <View>

@@ -1,8 +1,11 @@
+import { ReactNode } from 'react'
 import { View, Text, StyleSheet, type ViewStyle } from 'react-native'
 
+//ReactNodeはchildrenだけに適用可能
+//ReactNodeはReactがレンダリング可能なもの全てを表す型
 interface Props {
-  children: string
-  style: ViewStyle
+  children: ReactNode
+  style?: ViewStyle
 }
 
 const CircleButton = (props: Props) => {
