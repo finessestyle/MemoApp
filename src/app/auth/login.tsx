@@ -1,7 +1,13 @@
 import { ReactNode } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { router, Link } from 'expo-router'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
+
+const handlePress = () => {
+  // ログイン
+  router.replace('/memo/list')
+}
 
 const LogIn = (): ReactNode => {
   return (
@@ -17,12 +23,14 @@ const LogIn = (): ReactNode => {
           value='Password'
           style={styles.input}
         />
-        <Button label='Submit' />
+        <Button label='Submit' onPress={() => {handlePress()}} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
-          <TouchableOpacity>
-            <Text style={styles.footerLink}>Sign up here!</Text>
-          </TouchableOpacity>
+          <Link href='/auth/signup' asChild >
+            <TouchableOpacity>
+              <Text style={styles.footerLink}>Sign up here!</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </View>
@@ -40,6 +48,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    fontWeight: 'bold',
     lineHeight: 32,
     marginBottom: 24
   },

@@ -2,9 +2,14 @@ import { ReactNode } from 'react'
 import {
   ScrollView, TextInput, StyleSheet, KeyboardAvoidingView
 } from 'react-native'
+import { router } from 'expo-router'
 import Header from '../../components/Header'
 import Icon from '../../components/Icon'
 import CircleButton from '../../components/CircleButton'
+
+const handlePress = () => {
+  router.push('/memo/detail')
+}
 
 const Edit = (): ReactNode => {
   return (
@@ -17,7 +22,7 @@ const Edit = (): ReactNode => {
           value={'買い物\nリスト'}
         />
       </ScrollView>
-      <CircleButton>
+      <CircleButton onPress={() => {handlePress()}}>
         <Icon name='check' size={40} color='#ffffff' />
       </CircleButton>
     </KeyboardAvoidingView>
