@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import { router, Link } from 'expo-router'
 import Button from '../../components/Button'
@@ -8,22 +8,35 @@ const handlePress = () => {
   router.replace('/memo/list')
 }
 const SignUp = (): ReactNode => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   return (
     <View style={styles.container} >
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
         <TextInput
-          value='Emaill address'
+          value={email}
+          onChangeText={(text) => {setEmail(text)}}
           style={styles.input}
+          keyboardType='email-address'
+          autoCapitalize='none'
+          placeholder='E-mail'
+          placeholderTextColor='#CCCCCC'
         />
         <TextInput
-          value='Password'
+          value={password}
+          onChangeText={(text) => {setPassword(text)}}
           style={styles.input}
+          autoCapitalize='none'
+          placeholder='Password'
+          placeholderTextColor='#CCCCCC'
+          textContentType='password'
+          secureTextEntry
         />
         <Button label='Submit' onPress={() => {handlePress()}}/>
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <Link href='/auth/login' asChild>
+          <Link href='/auth/login' replace asChild>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log In.</Text>
             </TouchableOpacity>
