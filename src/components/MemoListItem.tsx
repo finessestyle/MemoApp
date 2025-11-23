@@ -1,20 +1,20 @@
 import { ReactNode } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from '../components/Icon'
 
 const MemoListItem = (): ReactNode => {
   return (
-    <View style={styles.memoListItem}>
+    <TouchableOpacity style={styles.memoListItem}>
       <View>
         <Text style={styles.memoListItemTitle}>買い物リスト</Text>
         <Text style={styles.memoListItemDate}>2025年11月19日21:58</Text>
       </View>
-      <View style={styles.deleteButton}>
+      <TouchableOpacity >
         <Text>
           <Icon name='delete' size={30} color='#B0B0B0' />
         </Text>
-      </View>
-    </View>
+      </TouchableOpacity>
+    </TouchableOpacity>
   )
 }
 

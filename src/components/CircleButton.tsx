@@ -1,19 +1,20 @@
 import { ReactNode } from 'react'
-import { View, Text, StyleSheet, type ViewStyle } from 'react-native'
+import { Text, TouchableOpacity, StyleSheet, type ViewStyle } from 'react-native'
 
 //ReactNodeはchildrenだけに適用可能
 //ReactNodeはReactがレンダリング可能なもの全てを表す型
 interface Props {
   children: ReactNode
   style?: ViewStyle
+  onPress?: () => void
 }
 
 const CircleButton = (props: Props) => {
-  const { children, style } = props
+  const { children, style, onPress } = props
   return (
-    <View style={[styles.circleButton, style]}>
+    <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
       <Text style={styles.circleButtonLabel}>{children}</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
