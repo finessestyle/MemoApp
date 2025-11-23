@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import { router, Link } from 'expo-router'
-import Header from '../../components/Header'
 import Button from '../../components/Button'
 
 const handlePress = () => {
@@ -11,7 +10,6 @@ const handlePress = () => {
 const SignUp = (): ReactNode => {
   return (
     <View style={styles.container} >
-      <Header />
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
         <TextInput

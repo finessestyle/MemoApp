@@ -3,7 +3,6 @@ import {
   ScrollView, TextInput, StyleSheet, KeyboardAvoidingView
 } from 'react-native'
 import { router } from 'expo-router'
-import Header from '../../components/Header'
 import Icon from '../../components/Icon'
 import CircleButton from '../../components/CircleButton'
 
@@ -14,7 +13,6 @@ const handlePress = () => {
 const Edit = (): ReactNode => {
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
-      <Header />
       <ScrollView style={styles.inputContainer}>
         <TextInput
           multiline
