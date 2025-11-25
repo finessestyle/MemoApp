@@ -1,11 +1,22 @@
 import { ReactNode, useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import { router, Link } from 'expo-router'
+import { auth } from '../../config'
+import { signInWithEmailAndPassword } from 'firebase/auth/cordova'
 import Button from '../../components/Button'
 
-const handlePress = () => {
+const handlePress = (email: string, password: string) => {
   // ログイン
-  router.replace('/memo/list')
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    console.log(userCredential.user.uid)
+    router.replace('/memo/list')
+  })
+  .catch((error)=> {
+    const { code, message } = error
+    console.log(code, message)
+    Alert.alert(message)
+  })
 }
 
 const LogIn = (): ReactNode => {
@@ -34,7 +45,7 @@ const LogIn = (): ReactNode => {
           textContentType='password'
           secureTextEntry
         />
-        <Button label='Submit' onPress={() => {handlePress()}} />
+        <Button label='Submit' onPress={() => {handlePress(email, password)}} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
           <Link href='/auth/signup' replace asChild >
