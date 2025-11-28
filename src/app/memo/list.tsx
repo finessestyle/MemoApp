@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, FlatList } from 'react-native'
 import { router, useNavigation } from 'expo-router'
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore'
 import { db, auth } from '../../config'
@@ -14,13 +14,16 @@ const handlePress = () => {
 }
 
 const List = (): ReactNode => {
-  const [memos, setMemos] = useState<Memo[]>([])
+
   const navigation = useNavigation()
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => { return <LogOutButton />}
     })
   }, [])
+
+  const [memos, setMemos] = useState<Memo[]>([])
 
   useEffect(() => {
     if (auth.currentUser === null) return
@@ -29,7 +32,6 @@ const List = (): ReactNode => {
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const remoteMemos: Memo[] = []
       snapshot.forEach((doc) => {
-        console.log('memo', doc.data())
         const { bodyText, updatedAt } = doc.data()
         remoteMemos.push({
           id: doc.id,
@@ -44,9 +46,10 @@ const List = (): ReactNode => {
 
   return (
     <View style={styles.container}>
-      <View>
-        {memos.map((memo) => <MemoListItem memo={memo} />)}
-      </View>
+      <FlatList
+        data={memos}
+        renderItem={({ item }) => <MemoListItem memo={item} /> }
+      />
       <CircleButton onPress={() => {handlePress()}}>
         <Icon name='plus' size={40} color='#ffffff' />
       </CircleButton>
