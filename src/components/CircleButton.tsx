@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Text, TouchableOpacity, StyleSheet, type ViewStyle } from 'react-native'
+import { TouchableOpacity, StyleSheet, type ViewStyle } from 'react-native'
 
 //ReactNodeはchildrenだけに適用可能
 //ReactNodeはReactがレンダリング可能なもの全てを表す型
@@ -7,13 +7,18 @@ interface Props {
   children: ReactNode
   style?: ViewStyle
   onPress?: () => void
+  disabled?: boolean
 }
 
 const CircleButton = (props: Props) => {
-  const { children, style, onPress } = props
+  const { children, style, onPress, disabled } = props
   return (
-    <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
-      <Text style={styles.circleButtonLabel}>{children}</Text>
+    <TouchableOpacity
+      style={[styles.circleButton, style]}
+      onPress={onPress}
+      disabled={disabled}
+    >
+      {children}
     </TouchableOpacity>
   )
 }
@@ -34,11 +39,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     textShadowOffset: {width: 0, height: 8},
     elevation: 8
-  },
-  circleButtonLabel: {
-    color: '#ffffff',
-    fontSize: 40,
-    lineHeight: 48
   }
 })
 
