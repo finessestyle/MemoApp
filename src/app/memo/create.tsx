@@ -1,12 +1,13 @@
 import { ReactNode, useState } from 'react'
 import {
-  ScrollView, TextInput, StyleSheet, KeyboardAvoidingView
+  ScrollView, TextInput, StyleSheet
 } from 'react-native'
 import { router } from 'expo-router'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
 import { auth, db } from '../../config'
 import Icon from '../../components/Icon'
 import CircleButton from '../../components/CircleButton'
+import KeyboardAvoidingView from '../../components/KeyBoardAvoidingView'
 
 const handlePress = (bodyText: string) => {
   if (auth.currentUser === null) return
@@ -27,13 +28,14 @@ const handlePress = (bodyText: string) => {
 const Create = (): ReactNode => {
   const [bodyText, setBodyText] = useState('')
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView  style={styles.container}>
       <ScrollView style={styles.inputContainer}>
         <TextInput
           multiline
           style={styles.input}
           value={bodyText}
           onChangeText={(text) => {setBodyText(text)}}
+          autoFocus
         />
       </ScrollView>
       <CircleButton onPress={() => {handlePress(bodyText)}}>
