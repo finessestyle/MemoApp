@@ -1,10 +1,11 @@
 import { ReactNode, useState, useEffect } from 'react'
 import {
-  ScrollView, TextInput, StyleSheet, KeyboardAvoidingView, Alert
+  ScrollView, TextInput, StyleSheet, Alert
 } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
 import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore'
 import { db, auth } from '../../config'
+import KeyboardAvoidingView from '../../components/KeyBoardAvoidingView'
 import Icon from '../../components/Icon'
 import CircleButton from '../../components/CircleButton'
 
@@ -41,7 +42,7 @@ const Edit = (): ReactNode => {
       })
   }, [])
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <ScrollView style={styles.inputContainer}>
         <TextInput
           multiline
