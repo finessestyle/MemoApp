@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-const Index = () => {
+const List = () => {
   return (
     <View style={styles.container}>
       <View>
@@ -9,37 +9,34 @@ const Index = () => {
           <Text>ログアウト</Text>
         </View>
       </View>
-      <View >
-        <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2026年2月23日21:13</Text>
-          </View>
-          <View>
-            <Text>×</Text>
-          </View>
-        </View>
-        <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2026年2月23日21:13</Text>
-          </View>
-          <View>
-            <Text>×</Text>
-          </View>
-        </View>
-        <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2026年2月23日21:13</Text>
-          </View>
-          <View>
-            <Text>×</Text>
-          </View>
-        </View>
-      </View>
       <View>
-        <Text>＋</Text>
+        <View>
+          <View>
+            <Text>買い物リスト</Text>
+            <Text>2026年2月23日21:13</Text>
+          </View>
+          <View>
+            <Text>×</Text>
+          </View>
+        </View>
+        <View>
+          <View>
+            <Text>買い物リスト</Text>
+            <Text>2026年2月23日21:13</Text>
+          </View>
+          <View>
+            <Text>×</Text>
+          </View>
+        </View>
+        <View>
+          <View>
+            <Text>買い物リスト</Text>
+            <Text>2026年2月23日21:13</Text>
+          </View>
+          <View>
+            <Text>×</Text>
+          </View>
+        </View>
       </View>
     </View>
   )
@@ -47,10 +44,8 @@ const Index = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flex: 1
   }
 })
 
-export default Index
+export default List
