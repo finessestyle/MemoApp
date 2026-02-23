@@ -1,50 +1,25 @@
 import { View, Text, StyleSheet } from 'react-native'
 
+import Header from '../../components/Header'
+import MemoListItem from '../../components/MemoListItem'
+import CircleButton from '../../components/CircleButton'
+
 const List = () => {
   return (
     <View style={styles.container}>
-      <View>
-        <View>
-          <Text>MemoApp</Text>
-          <Text>ログアウト</Text>
-        </View>
-      </View>
-      <View>
-        <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2026年2月23日21:13</Text>
-          </View>
-          <View>
-            <Text>×</Text>
-          </View>
-        </View>
-        <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2026年2月23日21:13</Text>
-          </View>
-          <View>
-            <Text>×</Text>
-          </View>
-        </View>
-        <View>
-          <View>
-            <Text>買い物リスト</Text>
-            <Text>2026年2月23日21:13</Text>
-          </View>
-          <View>
-            <Text>×</Text>
-          </View>
-        </View>
-      </View>
+      <Header />
+      <MemoListItem />
+      <MemoListItem />
+      <MemoListItem />
+      <CircleButton>＋</CircleButton>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#ffffff'
   }
 })
 
