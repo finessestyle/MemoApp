@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, type ViewStyle } from 'react-native'
+import { type ReactNode } from 'react'
 
 interface Props {
-  children: string
+  children?: ReactNode
   style?: ViewStyle
 }
 
