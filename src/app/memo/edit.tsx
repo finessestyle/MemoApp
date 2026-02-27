@@ -1,10 +1,15 @@
 import {
   View, TextInput, StyleSheet, KeyboardAvoidingView
- } from 'react-native'
+} from 'react-native'
+import { router } from 'expo-router'
 import { Feather } from '@expo/vector-icons'
 
 import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
+
+const handlePress = () => {
+  router.replace('memo/list')
+}
 
 
 const Edit = () => {
@@ -18,7 +23,7 @@ const Edit = () => {
           value={'買い物リスト\nリスト'}
         />
       </View>
-      <CircleButton>
+      <CircleButton onPress={() => handlePress()}>
         <Feather name='check' size={40} color='#ffffff' />
       </CircleButton>
     </KeyboardAvoidingView>

@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { Link } from 'expo-router'
 import { Feather } from '@expo/vector-icons'
 
 const MemoListItem = () => {
   return (
-    <View>
+    <Link href='/memo/detail' asChild>
       <TouchableOpacity style={styles.memoListItem}>
         <View>
           <Text style={styles.memoListItemTitle}>買い物リスト</Text>
@@ -15,7 +16,7 @@ const MemoListItem = () => {
           </Text>
         </TouchableOpacity>
       </TouchableOpacity>
-    </View>
+    </Link>
   )
 }
 
