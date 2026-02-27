@@ -2,9 +2,8 @@ import {
   View, TextInput, StyleSheet, KeyboardAvoidingView
 } from 'react-native'
 import { router } from 'expo-router'
-import { Feather } from '@expo/vector-icons'
+import { Octicons } from '@expo/vector-icons'
 
-import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
 
 const handlePress = () => {
@@ -15,7 +14,6 @@ const handlePress = () => {
 const Edit = () => {
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
-      <Header />
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -24,7 +22,7 @@ const Edit = () => {
         />
       </View>
       <CircleButton onPress={() => handlePress()}>
-        <Feather name='check' size={40} color='#ffffff' />
+        <Octicons name='check' size={40} color='#ffffff' />
       </CircleButton>
     </KeyboardAvoidingView>
   )

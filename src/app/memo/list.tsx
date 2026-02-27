@@ -1,8 +1,10 @@
-import { View, StyleSheet } from 'react-native'
-import { router } from 'expo-router'
-import { Feather } from '@expo/vector-icons'
+import { View, StyleSheet, Text } from 'react-native'
+import { router, useNavigation } from 'expo-router'
+import { useEffect } from 'react'
+import { Octicons } from '@expo/vector-icons'
 
-import Header from '../../components/Header'
+import LogOutButton from '../../components/LogOutButton'
+
 import MemoListItem from '../../components/MemoListItem'
 import CircleButton from '../../components/CircleButton'
 
@@ -11,14 +13,19 @@ const handlePress = () => {
 }
 
 const List = () => {
+  const navigation = useNavigation()
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => { return <LogOutButton /> }
+    })
+  }, [])
   return (
     <View style={styles.container}>
-      <Header />
       <MemoListItem />
       <MemoListItem />
       <MemoListItem />
       <CircleButton onPress={() => handlePress()}>
-        <Feather name='plus' size={40} />
+        <Octicons name='plus' size={40} />
       </CircleButton>
     </View>
   )

@@ -1,8 +1,7 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { router } from 'expo-router'
-import { FontAwesome } from '@expo/vector-icons'
+import { Octicons } from '@expo/vector-icons'
 
-import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
 
 const handlePress = () => {
@@ -12,7 +11,6 @@ const handlePress = () => {
 const Detail = () => {
   return (
     <View style={styles.container}>
-      <Header />
       <View style={styles.memoHeader}>
         <Text style={styles.memoTitle}>買い物リスト</Text>
         <Text style={styles.memoDate}>2026年2月25日 0:23</Text>
@@ -26,7 +24,7 @@ const Detail = () => {
         </Text>
       </ScrollView>
       <CircleButton style={{ top: 160, bottom: 'auto' }} onPress={() => handlePress()}>
-        <FontAwesome name='pencil' size={40} />
+        <Octicons name='pencil' size={40} />
       </CircleButton>
     </View>
   )
