@@ -12,7 +12,7 @@ const List = () => {
       <MemoListItem />
       <MemoListItem />
       <MemoListItem />
-      <CircleButton>
+      <CircleButton onPress={() => {}}>
         <Feather name='plus' size={40} />
       </CircleButton>
     </View>

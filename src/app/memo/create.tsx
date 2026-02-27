@@ -6,6 +6,10 @@ import { Feather } from '@expo/vector-icons'
 import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
 
+const handlePress = () => {
+
+}
+
 
 const Create = () => {
   return (
@@ -18,7 +22,7 @@ const Create = () => {
           value=''
         />
       </View>
-      <CircleButton>
+      <CircleButton onPress={() => {handlePress}}>
         <Feather name='check' size={40} color='#ffffff' />
       </CircleButton>
     </KeyboardAvoidingView>
