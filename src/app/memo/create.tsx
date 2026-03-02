@@ -1,27 +1,46 @@
 import {
-  View, TextInput, StyleSheet, KeyboardAvoidingView
+  View, TextInput, StyleSheet
 } from 'react-native'
+import { collection, addDoc, Timestamp } from 'firebase/firestore'
+import { useState } from 'react'
 import { router } from 'expo-router'
 import { Octicons } from '@expo/vector-icons'
+import { db, auth } from '../../config'
 
+import KeyboardAvoidingView from '../../components/KeyBordAvoidingView'
 import CircleButton from '../../components/CircleButton'
 
-const handlePress = () => {
-  router.replace('memo/detail')
+const handlePress = (bodyText: string) => {
+  if (auth.currentUser === null) return
+  const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
+  addDoc(ref, {
+    bodyText,
+    updatedAt: Timestamp.fromDate(new Date())
+  })
+  .then((docRef) => {
+    console.log('success', docRef.id)
+    router.replace('memo/detail')
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 }
 
 
 const Create = () => {
+  const [bodyText, setBodyText] = useState('')
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView  style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           multiline
-          value=''
+          value={bodyText}
+          autoFocus
+          onChangeText={(text) => {setBodyText(text)}}
         />
       </View>
-      <CircleButton onPress={() => handlePress()}>
+      <CircleButton onPress={() => { handlePress(bodyText)} }>
         <Octicons name='check' size={40} color='#ffffff' />
       </CircleButton>
     </KeyboardAvoidingView>
