@@ -19,14 +19,12 @@ const MemoListItem = (props: Props) => {
       asChild
     >
       <TouchableOpacity style={styles.memoListItem}>
-        <View>
+        <View style={styles.memoListItemContainer}>
           <Text numberOfLines={1} style={styles.memoListItemTitle}>{bodyText}</Text>
           <Text style={styles.memoListItemDate}>{dateString}</Text>
         </View>
-        <TouchableOpacity>
-          <Text>
-            <Feather name="x" size={24} color='#B0B0B0' />
-          </Text>
+        <TouchableOpacity >
+          <Feather name="x" size={24} color='#B0B0B0' />
         </TouchableOpacity>
       </TouchableOpacity>
     </Link>
@@ -42,11 +40,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 19,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderColor: 'rgba(0,0,0,0.15)'
+    borderColor: 'rgba(0,0,0,0.15)',
+  },
+  memoListItemContainer: {
+    flex: 1,
   },
   memoListItemTitle: {
     fontSize: 16,
-    lineHeight: 32
+    lineHeight: 32,
   },
   memoListItemDate: {
     fontSize: 12,

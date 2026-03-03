@@ -8,16 +8,16 @@ import { type Memo } from '../../../types/memo'
 
 import CircleButton from '../../components/CircleButton'
 
-const handlePress = () => {
-  router.push('memo/edit')
+const handlePress = (id: string) => {
+  router.push({pathname: 'memo/edit', params: { id } })
 }
 
 const Detail = () => {
-  const { id } = useLocalSearchParams()
+  const id = String(useLocalSearchParams().id)
   const [memo, setMemo] = useState<Memo | null>(null)
   useEffect(() => {
     if(auth.currentUser === null) return
-    const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id))
+    const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
     const unsubscribe = onSnapshot(ref, (memoDoc) => {
       const { bodyText, updatedAt } = memoDoc.data() as Memo
       setMemo({
@@ -31,13 +31,13 @@ const Detail = () => {
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
-        <Text style={styles.memoTitle}>{memo?.bodyText}</Text>
+        <Text numberOfLines={1} style={styles.memoTitle}>{memo?.bodyText}</Text>
         <Text style={styles.memoDate}>{memo?.updatedAt?.toDate().toLocaleString('ja-JP')}</Text>
       </View>
       <ScrollView style={styles.memoBody}>
         <Text style={styles.memoBodyText}>{memo?.bodyText}</Text>
       </ScrollView>
-      <CircleButton style={{ top: 60, bottom: 'auto' }} onPress={() => handlePress()}>
+      <CircleButton style={{ top: 60, bottom: 'auto' }} onPress={() => { handlePress(id) }}>
         <Octicons name='pencil' size={32} />
       </CircleButton>
     </View>
