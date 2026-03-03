@@ -1,5 +1,5 @@
 import {
-  View, TextInput, StyleSheet, KeyboardAvoidingView, Alert
+  View, TextInput, StyleSheet, Alert
 } from 'react-native'
 import { useState, useEffect } from 'react'
 import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore'
@@ -8,6 +8,7 @@ import { Octicons } from '@expo/vector-icons'
 
 import { auth , db } from '../../config'
 import CircleButton from '../../components/CircleButton'
+import KeyboardAvoidingView from '../../components/KeyBordAvoidingView'
 
 const handlePress = (id: string, bodyText: string) => {
   if(auth.currentUser === null) return
@@ -41,12 +42,13 @@ const Edit = () => {
       })
   }, [])
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView  style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           multiline
           value={bodyText}
+          autoFocus
           onChangeText={(text) => {setBodyText(text)}}
         />
       </View>

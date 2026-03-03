@@ -1,10 +1,33 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { Link } from 'expo-router'
 import { Feather } from '@expo/vector-icons'
 import { type Memo } from '../../types/memo'
+import { deleteDoc, doc } from 'firebase/firestore'
+
+import { auth, db} from '../config'
 
 interface Props {
   memo: Memo
+}
+
+const handlePress = (id: string) => {
+  if (auth.currentUser === null) return
+  const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
+  Alert.alert('メモを削除します', 'よろしいですか？', [
+    {
+      text: 'キャンセル'
+    },
+    {
+      text: '削除する',
+      style: 'destructive',
+      onPress: () => {
+        deleteDoc(ref)
+          .catch(() => {
+            Alert.alert('削除に失敗しました')
+          })
+      }
+    }
+  ])
 }
 
 const MemoListItem = (props: Props) => {
@@ -18,12 +41,12 @@ const MemoListItem = (props: Props) => {
       href={{ pathname: '/memo/detail', params: { id: memo.id } }}
       asChild
     >
-      <TouchableOpacity style={styles.memoListItem}>
+      <TouchableOpacity style={styles.memoListItem} >
         <View style={styles.memoListItemContainer}>
           <Text numberOfLines={1} style={styles.memoListItemTitle}>{bodyText}</Text>
           <Text style={styles.memoListItemDate}>{dateString}</Text>
         </View>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={() => { handlePress(memo.id) }}>
           <Feather name="x" size={24} color='#B0B0B0' />
         </TouchableOpacity>
       </TouchableOpacity>
