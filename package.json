@@ -1,7 +1,7 @@
 {
   "name": "memoapp",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "expo/AppEntry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -14,7 +14,7 @@
     "react": "19.1.0",
     "react-native": "0.81.5"
   },
-    "devDependencies": {
+  "devDependencies": {
     "@types/react": "~19.1.0",
     "eslint": "^9.0.0",
     "@eslint/js": "^9.0.0",
