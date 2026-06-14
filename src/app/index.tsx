@@ -3,7 +3,30 @@ import { View, Text, StyleSheet } from 'react-native'
 const Index = () => {
   return (
     <View style={styles.container}>
-      <Text>Hello World</Text>
+
+      <View>
+        <View>
+          <Text>MemoApp</Text>
+          <Text>ログアウト</Text>
+        </View>
+      </View>
+
+      <View>
+        <View>
+          <View>
+            <Text>買い物リスト</Text>
+            <Text>2026年6月14日20:09</Text>
+          </View>
+          <View>
+            <Text>×</Text>
+          </View>
+        </View>
+      </View>
+
+      <View>
+        <Text>＋</Text>
+      </View>
+
     </View>
   )
 }
