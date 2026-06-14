@@ -19,7 +19,7 @@ const Index = () => {
         <MemoListItem />
         <MemoListItem />
       </View>
-      <CircleButton />
+      <CircleButton>＋</CircleButton>
     </View>
   )
 }
