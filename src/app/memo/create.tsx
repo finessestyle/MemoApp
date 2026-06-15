@@ -3,13 +3,13 @@ import Header from '../../components/Header'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 
-const Edit = () => {
+const Create = () => {
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
       <Header />
       <View style={styles.inputContainer}>
         <TextInput
-          value={'買い物リスト\n・りんご'}
+          value=''
           style={styles.input}
           multiline
         />
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Edit
+export default Create
