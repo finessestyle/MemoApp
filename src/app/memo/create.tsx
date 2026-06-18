@@ -6,10 +6,10 @@ import { useState } from 'react'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 
-const handlePress = async (bodyText: string) => {
+const handlePress = (bodyText: string) => {
   if (auth.currentUser === null) return
-  const ref = collection(db, `user/${auth.currentUser.uid}/memos`)
-  await addDoc(ref, {
+  const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
+  addDoc(ref, {
     bodyText,
     updatedAt: Timestamp.fromDate(new Date())
   })
@@ -36,6 +36,7 @@ const Create = () => {
           style={styles.input}
           multiline
           onChangeText={(text) => {setBodyText(text)}}
+          autoFocus
         />
       </View>
       <CircleButton onPress={() => {handlePress(bodyText)}} >
