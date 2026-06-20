@@ -1,4 +1,4 @@
-import { View, StyleSheet, TextInput, KeyboardAvoidingView, Alert } from 'react-native'
+import { StyleSheet, TextInput, KeyboardAvoidingView, Alert, ScrollView } from 'react-native'
 import { router } from 'expo-router'
 import { useLocalSearchParams } from 'expo-router'
 import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore'
@@ -41,7 +41,7 @@ const Edit = () => {
 
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
-      <View style={styles.inputContainer}>
+      <ScrollView style={styles.inputContainer}>
         <TextInput
           value={bodyText}
           style={styles.input}
@@ -49,7 +49,7 @@ const Edit = () => {
           autoFocus
           onChangeText={(text) => {setBodyText(text)}}
         />
-      </View>
+      </ScrollView>
       <CircleButton onPress={() => handlePress(id, bodyText)} style={{ bottom: 40 }}>
         <Icon name='check' size={40} color='#ffffff' />
       </CircleButton>
@@ -62,15 +62,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
   inputContainer: {
-    paddingVertical: 32,
-    paddingHorizontal: 27,
     flex: 1
   },
   input: {
     flex: 1,
     fontSize: 16,
     lineHeight: 24,
-    textAlignVertical: 'top'
+    textAlignVertical: 'top',
+    paddingVertical: 32,
+    paddingHorizontal: 27,
   }
 })
 
